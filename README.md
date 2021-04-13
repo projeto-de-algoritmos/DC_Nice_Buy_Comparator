@@ -10,18 +10,43 @@
 | 18/0029177 | Wagner Martins da Cunha |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O NiceBuyComparator compara listas de desejo rankeadas entre usuários, retornando o quão semelhantes são os gostos entre esses usuários. Para esse cálculo foi usado o algoritmo de contagem de inversões.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Javascript<br>
+**Framework**: ReactJs<br>
+
+Requisitos: NodeJs e npm
+
+Primeiro, faça o download dos arquivos na sua máquina com:
+
+```
+$ git clone https://github.com/projeto-de-algoritmos/DC_Nice_Buy_Comparator.git
+```
+
+Após isso vá para a pasta app, onde se encontram os arquivos para execução do projeto com:
+
+```
+$ cd DC_Nice_Buy_Comparator/app
+```
+
+Agora é só instalar as dependências com o seguinte comando:
+
+```
+$ npm install
+```
+
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+
+Para rodar o projeto, após sua instalação, basta realizar este comando:
+
+```
+$ npm start
+```
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
