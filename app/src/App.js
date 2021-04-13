@@ -3,14 +3,18 @@ import './App.css';
 
 import WishListComparator from './DataStructures/WishListComparator';
 import globalRank from './DataStructures/globalRank';
+import peoples from './DataStructures/peoples'
 
 function App() {
   const [myRank, setMyrank] = useState(Object.keys(globalRank));
   const [product1, setProduct1] = useState(Object.keys(globalRank)[0]);
   const [product2, setProduct2] = useState(Object.keys(globalRank)[1]);
+  const [correspondence, setCorrespondence] = useState(['ainda não comparado','ainda não comparado','ainda não comparado','ainda não comparado','ainda não comparado','ainda não comparado']);
+  const peoplesName = ['AntonioRuan', 'Wagner', 'Ian', 'Rafael', 'Maria', 'Joao'];
+  const comparator = new WishListComparator();
 
-  function ListOptions(){
-    let list = Object.keys(globalRank);
+  function ListOptions(props){
+    let list = props.list;
     const listOptions = list.map((option) =>
       <option value={option}>
         {option}
@@ -44,6 +48,25 @@ function App() {
     );
   }
 
+  function ListPerson(){
+    let result = []
+    for(let i = 0; i < peoples.length; i++){
+      result.push(
+        <div>
+          <text>
+            {peoplesName[i]}
+          </text>
+          <br/>
+          <select>
+            <ListOptions list={peoples[i]}></ListOptions>
+          </select>
+          <text> Número de inversões = {correspondence[i]}</text>
+        </div>
+      )
+    }
+    return result;
+  }
+
   const switchProduct = async() => {
     await setMyrank( (previus) => {
       let aux = [...previus];
@@ -52,6 +75,26 @@ function App() {
       aux[t] = product1;
       return aux;
     })
+  }
+
+  const compareList = async() => {
+    function transform(list){
+      var obj = {}
+      for(let i = 0; i < list.length; i++){
+        obj[list[i]] = i+1;
+      }
+      return obj;
+    }
+    let objA = transform(myRank)
+    for(let i = 0; i < peoples.length; i++){
+      let objAux = transform(peoples[i]);
+      let inversions = comparator.compareLists(objA, objAux);
+      await setCorrespondence((previus) => {
+        let aux = [...previus];
+        aux[i] = inversions;
+        return aux;
+      })
+    }
   }
 
   return (
@@ -64,11 +107,11 @@ function App() {
         <div className="inputs">
           <label for="produto1" className="inputProduto1"> Produto 1: </label>
           <select id="produto1" className="inputProduto1" value={product1} onChange={(e) => {setProduct1(e.target.value)}}>
-            <ListOptions></ListOptions>
+            <ListOptions list={Object.keys(globalRank)}></ListOptions>
           </select>
           <label for="produto2" className="inputProduto2"> Produto 2: </label>
           <select id="produto2" className="inputProduto2" value={product2} onChange={(e) => {setProduct2(e.target.value)}}>
-            <ListOptions></ListOptions>
+            <ListOptions list={Object.keys(globalRank)}></ListOptions>
           </select>
         </div>
         <button className="switchBtn" onClick={switchProduct}> Trocar </button>
@@ -77,6 +120,10 @@ function App() {
         </div>
       </div>
       <div className="result">
+        <div className = "listPerson">
+          <ListPerson className="teste"></ListPerson>
+        </div>
+        <button className="btnComparar" onClick={compareList}>Comparar</button>
       </div>
     </div>
   );
