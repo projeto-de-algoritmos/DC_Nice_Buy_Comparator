@@ -13,7 +13,7 @@ function shuffle(array) {
 }
 
 const rank = Object.keys(globalRank);
-const AntonioRuan = shuffle(JSON.parse(JSON.stringify(rank)));
+const AntonioRuan = rank;
 const Wagner = shuffle(JSON.parse(JSON.stringify(rank)));
 const Ian = shuffle(JSON.parse(JSON.stringify(rank)));
 const Rafael = shuffle(JSON.parse(JSON.stringify(rank)));
