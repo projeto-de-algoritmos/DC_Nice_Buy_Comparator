@@ -13,7 +13,10 @@
 O NiceBuyComparator compara listas de desejo rankeadas entre usuários, retornando o quão semelhantes são os gostos entre esses usuários. Para esse cálculo foi usado o algoritmo de contagem de inversões.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+![Screenshot 1](assets/exemple01.png)
+![Screenshot 2](assets/exemple02.png)
+![Screenshot 3](assets/exemple03.png)
 
 ## Instalação 
 **Linguagem**: Javascript<br>
@@ -47,10 +50,3 @@ Para rodar o projeto, após sua instalação, basta realizar este comando:
 ```
 $ npm start
 ```
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
